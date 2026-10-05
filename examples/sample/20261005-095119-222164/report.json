@@ -1,0 +1,57 @@
+{
+  "target": "DEMO - SYNTHETIC LAB DATA",
+  "address": "192.0.2.10",
+  "resolved": [
+    "192.0.2.10"
+  ],
+  "time": "Synthetic sample; not a live scan",
+  "options": {
+    "tcp": "Top 1000",
+    "udp": false
+  },
+  "stages": [
+    {
+      "name": "05-enum-tcp-21",
+      "status": "completed",
+      "hosts": [
+        {
+          "status": "up",
+          "reason": "echo-reply",
+          "addresses": [
+            "192.0.2.10"
+          ],
+          "ports": [
+            {
+              "port": 21,
+              "protocol": "tcp",
+              "state": "open",
+              "reason": "syn-ack",
+              "service": {
+                "name": "ftp",
+                "product": "Example FTP",
+                "version": "1.0"
+              },
+              "scripts": [
+                {
+                  "id": "ftp-anon",
+                  "output": "Anonymous FTP login allowed (FTP code 230)\nSynthetic demonstration evidence only."
+                }
+              ]
+            }
+          ],
+          "scripts": [],
+          "os": []
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "severity": "Medium",
+      "title": "Anonymous FTP login accepted",
+      "endpoint": "21/tcp",
+      "evidence": "Anonymous FTP login allowed (FTP code 230)\nSynthetic demonstration evidence only.",
+      "recommendation": "Review whether public access is intended and restrict permissions."
+    }
+  ]
+}
